@@ -1,6 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
-from pprint import pprint
+# from pprint import pprint # no needed for deploying in herroku
 
 
 SCOPE = [
@@ -33,7 +33,8 @@ def get_sales_data():
         print("Data should be six numbers, separated by commas.")
         print("Example: 10,20,30,40,50,60\n")
 
-        data_str = input("Enter your data here: ")
+        data_str = input("Enter your data here:\n") # always remember
+                                                    # to add: \n in input method
         # print(f"The data provided is {data_str}")
 
         sales_data = data_str.split(",")
