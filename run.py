@@ -65,26 +65,26 @@ def validate_data(values):
 
     return True
 
-"""
-def update_sales_worksheet(data):
-    
-     # Update sales worksheet, add new row with the list data provided
-    
-    print("Updating sales worksheet...\n")
-    sales_worksheet = SHEET.worksheet("sales")
-    sales_worksheet.append_row(data)
-    print("Sales worksheet updated successfully.\n")
+
+# def update_sales_worksheet(data):
+#     """
+#     Update sales worksheet, add new row with the list data provided
+#     """
+#     print("Updating sales worksheet...\n")
+#     sales_worksheet = SHEET.worksheet("sales")
+#     sales_worksheet.append_row(data)
+#     print("Sales worksheet updated successfully.\n")
 
 
-def update_surplus_worksheet(data):
-    
-     # Update surplus worksheet, add new row with the list data provided
-    
-    print("Updating surplus worksheet...\n")
-    surplus_worksheet = SHEET.worksheet("surplus")
-    surplus_worksheet.append_row(data)
-    print("Surplus worksheet updated successfully.\n")
-"""
+# def update_surplus_worksheet(data):
+#     """
+#     Update surplus worksheet, add new row with the list data provided
+#     """
+#     print("Updating surplus worksheet...\n")
+#     surplus_worksheet = SHEET.worksheet("surplus")
+#     surplus_worksheet.append_row(data)
+#     print("Surplus worksheet updated successfully.\n")
+
 
 def update_worksheet(data, worksheet):
     """
@@ -123,6 +123,26 @@ def calculate_surplus_data(sales_row):
     return surplus_data
 
 
+def get_last_5_entries_sales():
+    """
+    Collects columns of data from sales worksheet, collecting
+    the last 5 entries for each sandwich and returns the data
+    as a list of lists.
+    """
+    sales = SHEET.worksheet("sales")
+    # column = sales.col_values(3)
+    # print(column)
+
+    columns = []
+    for ind in range(1, 7): #Columns dont start with 0 indexing
+        # print(ind)
+        column = sales.col_values(ind)
+        # columns.append(column)
+        columns.append(column[-5:])
+    # pprint(columns)
+
+    return columns
+
 
 def main():
     """
@@ -141,4 +161,7 @@ def main():
     
 
 print("Welcome to Love Sandwiches Data Automation")
-main()
+# main()
+
+# get_last_5_entries_sales()
+sales_columns = get_last_5_entries_sales()
