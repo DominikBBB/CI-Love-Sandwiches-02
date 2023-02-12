@@ -35,6 +35,7 @@ def get_sales_data():
 
         data_str = input("Enter your data here:\n") # always remember
                                                     # to add: \n in input method
+                                                    
         # print(f"The data provided is {data_str}")
 
         sales_data = data_str.split(",")
